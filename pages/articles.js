@@ -1,47 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { getAllPostData } from '../lib/fetchedPosts';
 
-export default function Articles() {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    fetch('https://cmstiver-blog.herokuapp.com/posts')
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result);
-        },
-        (err) => {
-          setIsLoaded(true);
-          setError(err);
-        },
-      );
-  }, []);
-  if (error) {
-    return (
-      <div>
-        Error:
-        {error.message}
-      </div>
-    );
-  }
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
+export default function Articles({ postData }) {
   return (
     <ul>
-      {items.map((item) => (
-        <a href={`/articles/${item._id}`}>
-          <div>
-            <header>{item.title}</header>
-            <div>
-              <img src={item.image} alt="#" />
-            </div>
-          </div>
-        </a>
+      {postData.map((item) => (
+        <li key={item._id}>
+          <Link href={`/articles/${item._id}`} key={item.id}>
+            <a>
+              <div>
+                <header>{item.title}</header>
+                <div>
+                  <img src={item.image} alt="#" />
+                </div>
+              </div>
+            </a>
+          </Link>
+        </li>
       ))}
     </ul>
   );
+}
+
+export async function getStaticProps() {
+  const postData = await getAllPostData();
+  return {
+    props: postData,
+  };
 }

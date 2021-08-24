@@ -20,6 +20,7 @@
     "no-unused-vars": 1,
     "react/react-in-jsx-scope": 0,
     "react/jsx-props-no-spreading": 0,
-    "no-underscore-dangle": 0
+    "no-underscore-dangle": 0,
+    "jsx-a11y/anchor-is-valid": 0
   }
 }
