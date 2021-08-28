@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Head from 'next/head';
+import AppContext from '../components/AppContext';
 
 export default function LogIn() {
-  const [user, setUser] = useState();
+  const globalState = useContext(AppContext);
 
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem('user');
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      setUser(foundUser);
-    }
-  }, []);
+  const { user } = globalState;
+  const { setUser } = globalState;
 
   async function login(e) {
     const email = document.querySelector('#email');
