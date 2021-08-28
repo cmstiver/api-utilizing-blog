@@ -34,8 +34,8 @@ export default function Post({ postData, commentData }) {
       <Head>
         <title>{postData.postData.title}</title>
       </Head>
+      <h1>{postData.postData.title}</h1>
       <article>
-        <h1>{postData.postData.title}</h1>
         <div>{postData.postData.body}</div>
       </article>
       <div>

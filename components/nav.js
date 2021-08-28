@@ -16,6 +16,11 @@ export default function ArticleGrid() {
               <li>Articles</li>
             </a>
           </Link>
+          <Link href="/log-in">
+            <a>
+              <li>Log-In</li>
+            </a>
+          </Link>
         </ul>
       </nav>
     </header>
