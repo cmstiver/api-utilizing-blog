@@ -51,10 +51,10 @@ export default function Post({ postData, commentData }) {
       .then((resdata) => {
         console.log('Success:', resdata);
       })
+      .then(() => window.location.reload())
       .catch((error) => {
         console.error('Error:', error);
       });
-    window.location.reload();
   }
 
   if (user) {

@@ -7,10 +7,12 @@ export default function CreateArticle() {
   const { user } = globalState;
 
   async function createPost(e) {
+    e.preventDefault();
     const title = document.querySelector('#title');
     const body = document.querySelector('#body');
     const image = document.querySelector('#image');
     const date = document.querySelector('#date');
+    /*
     const published = document.querySelector('#published');
 
     function publishedValueConvert(x) {
@@ -19,6 +21,7 @@ export default function CreateArticle() {
       }
       return false;
     }
+    */
 
     function dateValueConvert(x) {
       if (x.value === null || x.value === undefined) {
@@ -32,10 +35,8 @@ export default function CreateArticle() {
       body: body.value,
       image: image.value,
       date: dateValueConvert(date.value),
-      published: publishedValueConvert(published),
+      // published: publishedValueConvert(published),
     };
-    console.log(data);
-    e.preventDefault();
     fetch(`https://cmstiver-blog.herokuapp.com/secured/posts?secret_token=${user.token}`, {
       method: 'POST',
       headers: {

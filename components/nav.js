@@ -1,6 +1,30 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
+import styled from 'styled-components';
 import AppContext from './AppContext';
+
+const TopNav = styled.nav`
+  display: flex;
+  background-color: whitesmoke;
+  height: fit-content;
+  justify-content: center;
+  margin-bottom: 6px;
+
+  ul {
+    list-style-type: none;
+    li {
+      display: inline-block;
+      padding: 10px;
+      color: black;
+      &:hover {
+        background-color: #dbdbdb;
+      }
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+`;
 
 export default function ArticleGrid() {
   const globalState = useContext(AppContext);
@@ -10,7 +34,7 @@ export default function ArticleGrid() {
   if (user) {
     return (
       <header>
-        <nav>
+        <TopNav>
           <ul>
             <Link href="/">
               <a>
@@ -32,19 +56,14 @@ export default function ArticleGrid() {
                 <li>Log-In</li>
               </a>
             </Link>
-            <li>
-              {user.user}
-              {' '}
-              is logged in.
-            </li>
           </ul>
-        </nav>
+        </TopNav>
       </header>
     );
   }
   return (
     <header>
-      <nav>
+      <TopNav>
         <ul>
           <Link href="/">
             <a>
@@ -62,7 +81,7 @@ export default function ArticleGrid() {
             </a>
           </Link>
         </ul>
-      </nav>
+      </TopNav>
     </header>
   );
 }
