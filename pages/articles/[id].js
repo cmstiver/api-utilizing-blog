@@ -173,6 +173,7 @@ export default function Post({ postData, commentData }) {
   );
 }
 
+/*
 export async function getStaticPaths() {
   const paths = await getAllPostIds();
   return {
@@ -180,8 +181,9 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+*/
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const postData = await getPostData(params.id);
   const commentData = await getCommentData(params.id);
   return {
