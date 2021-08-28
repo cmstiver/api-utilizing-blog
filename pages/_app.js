@@ -31,6 +31,7 @@ display: block;
 }
 body {
 line-height: 1;
+font-family: sans-serif;
 }
 ol, ul {
 list-style: none;
