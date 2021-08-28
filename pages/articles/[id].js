@@ -1,7 +1,54 @@
 import Head from 'next/head';
 import React, { useContext } from 'react';
+import styled from 'styled-components';
 import { getAllPostIds, getCommentData, getPostData } from '../../lib/fetchedPosts';
 import AppContext from '../../components/AppContext';
+
+const Layout = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Title = styled.h2`
+  font-size: xx-large;
+  margin-bottom: 9px;
+`;
+
+const ArticleImage = styled.img`
+  width: 50%;
+  min-width: 300px;
+  margin-bottom: 9px;
+`;
+
+const ArticleBody = styled.article`
+  width: 50%;
+  min-width: 300px;
+  margin-bottom: 9px;
+  background-color: whitesmoke;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+`;
+
+const Comment = styled.li`
+  display: flex;
+  align-self: center;
+  height: fit-content;
+  flex-direction: column;
+  width: 33%;
+  min-width: 300px;
+  background-color: whitesmoke;
+  margin: 3px;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 5px;
+  h4 {
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+`;
 
 export default function Post({ postData, commentData }) {
   const globalState = useContext(AppContext);
@@ -63,10 +110,47 @@ export default function Post({ postData, commentData }) {
         <Head>
           <title>{postData.postData.title}</title>
         </Head>
-        <h1>{postData.postData.title}</h1>
-        <article>
+        <Layout>
+          <Title>{postData.postData.title}</Title>
+          <ArticleImage src={postData.postData.image} />
+          <ArticleBody>
+            <div>{postData.postData.body}</div>
+          </ArticleBody>
+          <div>
+            <form method="POST">
+              <input id="name" type="text" placeholder="Name" name="name" />
+              <input id="body" type="text" placeholder="Comment" name="body" />
+              <button type="submit" onClick={postComment}>
+                Submit
+              </button>
+            </form>
+            <ul>
+              {commentData.commentData.map((comment) => (
+                <li key={comment._id} id={comment._id}>
+                  <h4>{comment.name}</h4>
+                  <p>{comment.body}</p>
+                  <button type="button" onClick={deleteComment}>
+                    Delete
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Layout>
+      </>
+    );
+  }
+  return (
+    <>
+      <Head>
+        <title>{postData.postData.title}</title>
+      </Head>
+      <Layout>
+        <Title>{postData.postData.title}</Title>
+        <ArticleImage src={postData.postData.image} />
+        <ArticleBody>
           <div>{postData.postData.body}</div>
-        </article>
+        </ArticleBody>
         <div>
           <form method="POST">
             <input id="name" type="text" placeholder="Name" name="name" />
@@ -77,45 +161,14 @@ export default function Post({ postData, commentData }) {
           </form>
           <ul>
             {commentData.commentData.map((comment) => (
-              <li key={comment._id} id={comment._id}>
+              <Comment key={comment._id} id={comment._id}>
                 <h4>{comment.name}</h4>
                 <p>{comment.body}</p>
-                <button type="button" onClick={deleteComment}>
-                  Delete
-                </button>
-              </li>
+              </Comment>
             ))}
           </ul>
         </div>
-      </>
-    );
-  }
-  return (
-    <>
-      <Head>
-        <title>{postData.postData.title}</title>
-      </Head>
-      <h1>{postData.postData.title}</h1>
-      <article>
-        <div>{postData.postData.body}</div>
-      </article>
-      <div>
-        <form method="POST">
-          <input id="name" type="text" placeholder="Name" name="name" />
-          <input id="body" type="text" placeholder="Comment" name="body" />
-          <button type="submit" onClick={postComment}>
-            Submit
-          </button>
-        </form>
-        <ul>
-          {commentData.commentData.map((comment) => (
-            <li key={comment._id} id={comment._id}>
-              <h4>{comment.name}</h4>
-              <p>{comment.body}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      </Layout>
     </>
   );
 }
