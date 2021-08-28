@@ -100,7 +100,7 @@ export default function Articles({ postData }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const postData = await getAllPostData();
   return {
     props: postData,
