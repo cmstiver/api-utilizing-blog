@@ -1,1 +1,1 @@
-See it live: https://api-utilizing-blog.vercel.app/
+See it live: https://api-utilizing-blog.vercel.app/articles
