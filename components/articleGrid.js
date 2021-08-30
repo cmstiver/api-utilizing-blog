@@ -23,7 +23,7 @@ const Grid = styled.div`
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 10px;
-  height: 50em;
+  height: 70em;
   width: 90%;
 
   div {
