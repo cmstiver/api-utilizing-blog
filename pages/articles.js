@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import styled from 'styled-components';
 import { getAllPostData } from '../lib/fetchedPosts';
 import AppContext from '../components/AppContext';
@@ -89,18 +90,23 @@ export default function Articles({ postData }) {
   }
 
   return (
-    <List>
-      {postData.map((item) => (
-        <Wrapper key={item._id} id={item._id}>
-          <Link href={`/articles/${item._id}`} key={item.id}>
-            <a>
-              <ArticleImage src={item.image} alt="#" />
-              <header>{item.title}</header>
-            </a>
-          </Link>
-        </Wrapper>
-      ))}
-    </List>
+    <>
+      <Head>
+        <title>Article List</title>
+      </Head>
+      <List>
+        {postData.map((item) => (
+          <Wrapper key={item._id} id={item._id}>
+            <Link href={`/articles/${item._id}`} key={item.id}>
+              <a>
+                <ArticleImage src={item.image} alt="#" />
+                <header>{item.title}</header>
+              </a>
+            </Link>
+          </Wrapper>
+        ))}
+      </List>
+    </>
   );
 }
 
