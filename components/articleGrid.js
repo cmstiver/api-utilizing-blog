@@ -24,7 +24,7 @@ const Grid = styled.div`
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 10px;
   height: 50em;
-  width: 75em;
+  width: 90%;
 
   div {
     display: flex;
