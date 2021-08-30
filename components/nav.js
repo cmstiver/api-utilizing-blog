@@ -5,7 +5,7 @@ import AppContext from './AppContext';
 
 const TopNav = styled.nav`
   display: flex;
-  background-color: whitesmoke;
+  background-color: #c0fdff;
   height: fit-content;
   justify-content: center;
   margin-bottom: 6px;
@@ -17,7 +17,7 @@ const TopNav = styled.nav`
       padding: 10px;
       color: black;
       &:hover {
-        background-color: #dbdbdb;
+        background-color: #e9feff;
       }
     }
   }

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { getAllPostIds, getCommentData, getPostData } from '../../lib/fetchedPosts';
+import { getCommentData, getPostData } from '../../lib/fetchedPosts';
 import AppContext from '../../components/AppContext';
 
 const Layout = styled.div`

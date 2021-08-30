@@ -29,9 +29,15 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 display: block;
 }
+html {
+background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+background-repeat: no-repeat;
+min-height: 100%;
+}
 body {
 line-height: 1;
 font-family: sans-serif;
+
 }
 ol, ul {
 list-style: none;

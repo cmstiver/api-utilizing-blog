@@ -14,8 +14,8 @@ const Wrapper = styled.li`
   align-self: center;
   height: fit-content;
   width: 33%;
-  min-width: 300px;
-  background-color: whitesmoke;
+  min-width: 450px;
+  background-color: #c8e7ff;
   margin: 3px;
   border-radius: 5px;
   overflow: hidden;
@@ -29,6 +29,10 @@ const Wrapper = styled.li`
     align-items: center;
     text-decoration: none;
     color: black;
+  }
+  @media only screen and (max-width: 450px) {
+    width: 98%;
+    min-width: 0;
   }
 `;
 
